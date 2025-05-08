@@ -15,3 +15,15 @@ CREATE TABLE customer_orders(
     PRIMARY KEY (order_id),
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
+
+CREATE TABLE IF NOT EXISTS users(
+    id INT NOT NULL,
+    user_name VARCHAR(64),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS authorities(
+    user_id INT NOT NULL,
+    authority VARCHAR(32),
+    CONSTRAINT fk_authorities_users FOREIGN KEY(user_id) REFERENCES users(id)
+);

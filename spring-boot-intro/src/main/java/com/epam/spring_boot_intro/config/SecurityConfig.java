@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth ->
                         auth
                                 .requestMatchers("/login", "/").permitAll()
+                                .requestMatchers("/actuator/prometheus").permitAll()
                                 .requestMatchers("/user", "/customer/**").hasAnyRole(Authority.ADMIN.name(), Authority.USER.name())
                                 .requestMatchers("/admin", "/order/**").hasRole(Authority.ADMIN.name())
                                 .anyRequest()
